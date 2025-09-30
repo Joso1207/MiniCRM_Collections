@@ -26,9 +26,11 @@ public class CRMApp {
                 case "3" -> removeEmailFromCustomer();
                 case "4" -> addTagToCustomer();
                 case "5" -> removeTagToCustomer();
-                case "6" -> printCustomerInformation();
-                case "7" -> listAll();
-                case "8" -> {
+                case "6" -> addNoteToCustomer();
+                case "7" -> removeNoteFromCustomer();
+                case "8" -> printCustomerInformation();
+                case "9" -> listAll();
+                case "quit" -> {
                     return;
                 }
 
@@ -117,9 +119,9 @@ public class CRMApp {
     private static void listAll(){
         for (Customer c : storage.values()){
 
-            System.out.println("Customer(id="+c.getId()+
-                    ", Name="+c.getName()+" Notes:"+c.getNotes().size()+
-                    " Tags:"+c.getTags().size());
+            System.out.println("Customer(id:"+c.getId()+
+                    ", Name: "+c.getName()+" Notes:"+c.getNotes().size()+
+                    " Tags:"+c.getTags().size()+")");
 
         }
     }
@@ -132,9 +134,12 @@ public class CRMApp {
         System.out.println("3. remove email from customer");
         System.out.println("4. add tag to Customer");
         System.out.println("5. remove tag from customer");
-        System.out.println("6. print customer information");
-        System.out.println("7. print all customer information");
-        System.out.println("8. quit");
+        System.out.println("6. add note to customer");
+        System.out.println("7. remove note1 from customer");
+
+        System.out.println("8. print customer information");
+        System.out.println("9. print all customer information");
+        System.out.println("quit");
     }
 
 
