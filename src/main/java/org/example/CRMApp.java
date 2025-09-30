@@ -30,9 +30,10 @@ public class CRMApp {
                 case "7" -> removeNoteFromCustomer();
                 case "8" -> printCustomerInformation();
                 case "9" -> listAll();
-                case "quit" -> {
+                case "10" -> {
                     return;
                 }
+                default -> System.err.println("No such command");
 
             }
 
@@ -41,8 +42,9 @@ public class CRMApp {
     }
 
     private static void addNewCustomer(){
-
+        System.out.println("Insert name of customer");
         String name = scanner.nextLine();
+
 
         Customer newCustomer = new Customer(name);
         storage.put(newCustomer.getId(), newCustomer);
@@ -52,7 +54,9 @@ public class CRMApp {
     private static void addEmailToCustomer(){
 
         String id,email;
+        System.out.println("Customer ID?");
         id = scanner.nextLine();
+        System.out.println("insert email body");
         email = scanner.nextLine();
 
         Customer c = storage.get(id);
@@ -63,7 +67,9 @@ public class CRMApp {
     private static void removeEmailFromCustomer(){
 
         String id,email;
+        System.out.println("Customer ID");
         id = scanner.nextLine();
+        System.out.println("Email to remove");
         email = scanner.nextLine();
 
         Customer c = storage.get(id);
@@ -73,7 +79,9 @@ public class CRMApp {
     private static void addTagToCustomer(){
 
         String id,tag;
+        System.out.println("Customer ID?");
         id = scanner.nextLine();
+        System.out.println("What tag do you want to add");
         tag = scanner.nextLine();
 
         Customer c = storage.get(id);
@@ -82,7 +90,9 @@ public class CRMApp {
 
     private static void removeTagToCustomer(){
         String id,tag;
+        System.out.println("Customer ID?");
         id = scanner.nextLine();
+        System.out.println("What tag to remove?");
         tag = scanner.nextLine();
 
 
@@ -92,7 +102,9 @@ public class CRMApp {
 
     private static void addNoteToCustomer() {
         String id,note;
+        System.out.println("Customer ID?");
         id = scanner.nextLine();
+        System.out.println("What note do you want to add?");
         note = scanner.nextLine();
 
 
@@ -103,7 +115,9 @@ public class CRMApp {
     private static void removeNoteFromCustomer(){
 
         String id,noteIndex;
+        System.out.println("Customer ID?");
         id = scanner.nextLine();
+        System.out.println("what note do you want removed");
         noteIndex = scanner.nextLine();
 
 
@@ -112,6 +126,7 @@ public class CRMApp {
     }
 
     private static void printCustomerInformation(){
+        System.out.println("Customer ID?");
         String id = scanner.nextLine();
         System.out.println(storage.get(id).toString());
     }
@@ -136,10 +151,9 @@ public class CRMApp {
         System.out.println("5. remove tag from customer");
         System.out.println("6. add note to customer");
         System.out.println("7. remove note1 from customer");
-
         System.out.println("8. print customer information");
         System.out.println("9. print all customer information");
-        System.out.println("quit");
+        System.out.println("10. quit");
     }
 
 
