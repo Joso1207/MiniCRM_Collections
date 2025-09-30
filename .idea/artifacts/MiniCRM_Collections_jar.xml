@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MiniCRM_Collections:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MiniCRM_Collections_jar</output-path>
+    <root id="archive" name="MiniCRM_Collections.jar">
+      <element id="module-output" name="MiniCRM_Collections" />
+    </root>
+  </artifact>
+</component>

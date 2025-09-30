@@ -18,6 +18,7 @@ public class CRMApp {
 
     private static void run(){
         while(true){
+
             printMenu();
 
             switch (scanner.nextLine()){
@@ -45,6 +46,10 @@ public class CRMApp {
         System.out.println("Insert name of customer");
         String name = scanner.nextLine();
 
+        if (name.isBlank()){
+            System.err.println("Name cannot be blank");
+        }
+
 
         Customer newCustomer = new Customer(name);
         storage.put(newCustomer.getId(), newCustomer);
@@ -59,6 +64,17 @@ public class CRMApp {
         System.out.println("insert email body");
         email = scanner.nextLine();
 
+        if(id.isBlank()||email.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
+
         Customer c = storage.get(id);
         c.addEmail(email);
 
@@ -72,6 +88,17 @@ public class CRMApp {
         System.out.println("Email to remove");
         email = scanner.nextLine();
 
+        if(id.isBlank()||email.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
+
         Customer c = storage.get(id);
         c.removeEmail(email);
     }
@@ -84,6 +111,17 @@ public class CRMApp {
         System.out.println("What tag do you want to add");
         tag = scanner.nextLine();
 
+        if(id.isBlank()||tag.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
+
         Customer c = storage.get(id);
         c.addTag(tag);
     }
@@ -94,6 +132,17 @@ public class CRMApp {
         id = scanner.nextLine();
         System.out.println("What tag to remove?");
         tag = scanner.nextLine();
+
+        if(id.isBlank()||tag.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
 
 
         Customer c = storage.get(id);
@@ -106,6 +155,17 @@ public class CRMApp {
         id = scanner.nextLine();
         System.out.println("What note do you want to add?");
         note = scanner.nextLine();
+
+        if(id.isBlank()||note.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
 
 
         Customer c = storage.get(id);
@@ -120,6 +180,22 @@ public class CRMApp {
         System.out.println("what note do you want removed");
         noteIndex = scanner.nextLine();
 
+        if(id.isBlank()||noteIndex.isBlank()){
+            System.err.println("No Blank inputs");
+            return;
+
+        }
+
+        if(!id.matches("[0-9]+")){
+            System.err.println("Only numerals for ID");
+            return;
+        }
+
+        if(!noteIndex.matches("[0-9]+")){
+            System.err.println("Only numerals for noteIndex");
+            return;
+        }
+
 
         Customer c = storage.get(id);
         c.removeNote(Integer.parseInt(noteIndex));
@@ -128,17 +204,28 @@ public class CRMApp {
     private static void printCustomerInformation(){
         System.out.println("Customer ID?");
         String id = scanner.nextLine();
+
+        if(!id.matches("[0-9]+")||id.isBlank()){
+            System.err.println("invalid id");
+            return;
+        }
+
         System.out.println(storage.get(id).toString());
+
+        System.out.println("press enter to continue");
+        scanner.nextLine();
     }
 
     private static void listAll(){
         for (Customer c : storage.values()){
-
             System.out.println("Customer(id:"+c.getId()+
                     ", Name: "+c.getName()+" Notes:"+c.getNotes().size()+
                     " Tags:"+c.getTags().size()+")");
 
         }
+        System.out.println("press enter to continue");
+        scanner.nextLine();
+
     }
 
     private static void printMenu(){

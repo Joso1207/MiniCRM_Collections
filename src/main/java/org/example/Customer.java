@@ -14,6 +14,11 @@ public class Customer {
 
 
     public Customer(String name) {
+
+        if (name.isBlank()){
+            throw new IllegalArgumentException("Name cannot be blank");
+        }
+
         this.name = name;
         lastId++;
         this.id = lastId.toString();
